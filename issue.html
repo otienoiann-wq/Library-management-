@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Issue Book - Library Management System{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Issue Book</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Select Book *</label>
+                    <select name="book_id" class="form-select" required>
+                        <option value="">-- Choose a book --</option>
+                        {% for book in books %}
+                        <option value="{{ book.id }}">
+                            {{ book.title }} by {{ book.author }} (Available: {{ book.available }})
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Select Member *</label>
+                    <select name="member_id" class="form-select" required>
+                        <option value="">-- Choose a member --</option>
+                        {% for member in members %}
+                        <option value="{{ member.id }}">{{ member.name }} ({{ member.email }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Loan Period (days)</label>
+                    <input type="number" name="days" class="form-control" value="14" min="1" max="90">
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-right"></i> Issue Book
+                </button>
+                <a href="{{ url_for('issues') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

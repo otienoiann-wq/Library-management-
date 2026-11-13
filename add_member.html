@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Add Member - Library Management System{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Register New Member</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form method="POST">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email *</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Phone</label>
+                    <input type="text" name="phone" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control">
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Register Member</button>
+                <a href="{{ url_for('members') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
